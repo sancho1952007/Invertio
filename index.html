@@ -1,0 +1,144 @@
+<!-- Invert Selection icon by Icons8: https://icons8.com/icon/eiFMwwRBb16j/invert-selection -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invertio - Invert Your Image Colour</title>
+    <link rel="shortcut icon" href="https://img.icons8.com/fluency/48/000000/invert-selection.png" type="image/x-icon">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.5/dist/html2canvas.min.js"></script>
+</head>
+<body>
+    <input type="file" class="file" accept=".png, .jpg, .jpeg, .jfif" onchange='upload(this)' hidden>
+    <center class="qa">
+        <b>What Is Invertio &rightarrow;</b>
+        <span>Invertio Is A Tool To Invert The Colours In Your Image!</span>
+        <br><br>
+        <b>Is It Free To Use &rightarrow;</b>
+        <span>Yes, It's Completely Free To Use.</span>
+        <br><br>
+        <b>Why Is A Useful Tool &rightarrow;</b>
+        <span>It Can Convert Full White Image Into A Dark Image Hence, Reduce Eye Strain.</span>
+    </center>
+    <center><button class="btn" id="upload" onclick="document.querySelector('.file').click()">Upload Image</button></center>
+    <a target="_blank" href="https://github.com/sancho1952007" id='who' class="link">Made With &hearts; from sancho1952007</a>
+    <a target="_blank" href="https://github.com/sancho1952007/Invertio" id="repo" class="link">Star/Fork This Repo On Github</a>
+</body>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Rajdhani&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+    .qa{
+        font-family: 'Rajdhani', sans-serif;
+        text-align: start;
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%);
+    }
+
+    .btn{
+        width: 90%;
+        height: 50px;
+        padding: 10px;
+        background-color: violet;
+        border: 0;
+        border-radius: 50px;
+        cursor: pointer;
+        font-size: 20px;
+        font-family: 'Rajdhani', sans-serif;
+        max-width: 500px;
+    }
+
+    .btn:hover{
+        background-color: rgb(221, 157, 221);
+    }
+
+    .btn:active{
+        background-color: rgb(194, 120, 194);
+    }
+
+    #upload{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    a{
+        all: unset;
+        color: blue;
+        cursor: pointer;
+        font-family: 'Montserrat', sans-serif;
+        text-align: center;
+    }
+
+    #who{
+        position: absolute;
+        bottom: 5%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    #repo{
+        position: absolute;
+        left: 50%;
+        bottom: 0%;
+        transform: translate(-50%, -50%);
+    }
+
+    .swal-title, .swal-text{
+        font-family: 'Rajdhani', sans-serif;
+    }
+</style>
+
+<script>
+    function upload(elem){
+        var elem = elem;
+        var filename = elem.files[0].name;
+        if (filename.endsWith(".png") || filename.endsWith(".jpg") || filename.endsWith('.jpeg') || filename.endsWith('.jfif')){
+            var read = new FileReader();
+            read.onloadend=function(){
+                try{
+                    var win=window.open('', '_blank');
+                    win.document.write(`
+                    \<title\>Invertio Inverted Image\</title\>
+                    \<body\>
+                        <img class='img' src='${read.result}'>
+                    \</body\>
+                    <style>
+                        body{
+                            width: 100%;
+                            height: 100vh;
+                            overflow: hidden;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            background-color: rgb(53, 53, 53);
+                        }
+    
+                        .img{
+                            height: 90vh;
+                            filter: invert(100%);
+                        }
+                    </style>
+                    `)
+                }
+                catch{
+                    swal('Error', 'Please Enable Your Popups For This Website And Try Again...', 'warning');
+                }
+            }
+            read.onerror=function(){
+                swal('Error', 'Could Not Upload File', 'error');
+            }
+            read.readAsDataURL(elem.files[0]);
+        }
+        else{
+            swal('Error', 'Please Select A .png, .jpg, .jpeg or a .jfif file...', 'error');
+        }
+    }
+</script>
+
+</html>
