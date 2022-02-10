@@ -14,3 +14,14 @@
 
 ## Why Is A Useful Tool?
 <pre>It Can Convert Full White Image Into A Dark Image Hence, Reduce Eye Strain.</pre>
+
+<br>
+
+## Preview
+***Non Inverted:***
+<img src='https://i.ibb.co/Rbb612h/preview.png'>
+
+<br>
+
+***Inverted:***
+<img src='https://i.ibb.co/4SFn38y/preview.png'>
